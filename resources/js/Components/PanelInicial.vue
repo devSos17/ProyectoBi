@@ -21,7 +21,7 @@ algo.value = "Picame we"
                     </template>
                     <template #content>
                         <div class="flex justify-content-center">
-                            <Link :href="route('profile.show')">
+                            <Link :href="route('movimiento.index')">
                                 <Button label="Ir al modulo" />
                             </Link>
                         </div>
