@@ -14,7 +14,7 @@ class Operacion extends Model
         "fecha",
     ];
 
-    public function movimiento()
+    public function movimientos()
     {
         return $this->hasMany(Movimiento::class);
     }

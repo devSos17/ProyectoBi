@@ -7,6 +7,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import Card from 'primevue/card';
 
 defineProps({
     title: String,
@@ -50,6 +51,9 @@ const logout = () => {
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
+                                </NavLink>
+                                <NavLink :href="route('movimiento.index')" :active="route().current('movimiento.*')">
+                                    Movimientos
                                 </NavLink>
                             </div>
                         </div>
@@ -283,8 +287,17 @@ const logout = () => {
             </header>
 
             <!-- Page Content -->
-            <main>
-                <slot />
+            <main class="flex min-h-screen min-w-screen">
+                <div class="flex align-items-center justify-content-center text-gray-900 border-round m-2 w-screen">
+                    <Card class="w-6">
+                        <template #content>
+                            
+                            <div class="overflow-y-auto h-auto w-auto" style="max-height: 70vh; max-width: 75vw;">
+                                <slot />
+                            </div>
+                        </template>
+                    </Card>
+                </div>
             </main>
         </div>
     </div>

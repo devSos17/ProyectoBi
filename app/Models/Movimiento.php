@@ -10,6 +10,8 @@ class Movimiento extends Model
     use HasFactory;
 
     protected $fillable = [
+        "operacion_id",
+        "cuenta_id",
         "cantidad",
         "if_abono"
     ];
