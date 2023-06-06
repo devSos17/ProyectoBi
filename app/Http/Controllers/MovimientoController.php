@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Movimiento;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use App\Models\{TipoCuenta, Cuenta, Operacion, Movimiento};
+use Carbon\Carbon;
 
 class MovimientoController extends Controller
 {
@@ -12,7 +14,10 @@ class MovimientoController extends Controller
      */
     public function index()
     {
-        //
+        $operaciones = Operacion::with(['movimientos.cuenta'])->get();
+        $cuentas = Cuenta::get();
+
+        return Inertia::render("Movimiento/Index", compact('operaciones', 'cuentas'));
     }
 
     /**
@@ -28,7 +33,23 @@ class MovimientoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $operacion = Operacion::create([
+            'concepto' => $request->concepto,
+            'fecha' => Carbon::parse($request->fecha)->format("Y-m-d H:m:s")
+        ]);
+
+        foreach($request->operaciones as $movimiento){
+            
+            Movimiento::create([
+                'cuenta_id' => $movimiento['selectedTipoCuenta']['id'],
+                'operacion_id' => $operacion->id,
+                'cantidad' => $movimiento['cantidad'],
+                'if_abono' => $movimiento['abono']
+            ]);
+        }
+
+        
     }
 
     /**
@@ -58,8 +79,11 @@ class MovimientoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Movimiento $movimiento)
+    public function destroy($id)
     {
-        //
+        
+        $operacion = Operacion::find($id);
+
+        $operacion->delete();
     }
 }
