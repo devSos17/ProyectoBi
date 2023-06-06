@@ -37,5 +37,5 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('balanzacomprobacion', [BalanzaComprobacionController::class, 'index']);
+    Route::get('balanzacomprobacion', [BalanzaComprobacionController::class, 'index'])->name('balanzacomprobacion.index');
 });

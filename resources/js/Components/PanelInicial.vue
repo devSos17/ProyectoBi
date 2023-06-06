@@ -35,7 +35,7 @@ algo.value = "Picame we"
                     </template>
                     <template #content>
                         <div class="flex justify-content-center">
-                            <Link :href="route('profile.show')">
+                            <Link :href="route('balanzacomprobacion.index')">
                                 <Button label="Ir al Modulo" />
                             </Link>
                         </div>

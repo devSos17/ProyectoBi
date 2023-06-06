@@ -55,6 +55,9 @@ const logout = () => {
                                 <NavLink :href="route('movimiento.index')" :active="route().current('movimiento.*')">
                                     Movimientos
                                 </NavLink>
+                                <NavLink :href="route('balanzacomprobacion.index')" :active="route().current('balanzacomprobacion.*')">
+                                    Balanza de Comprobacion
+                                </NavLink>
                             </div>
                         </div>
 
@@ -291,7 +294,7 @@ const logout = () => {
                 <div class="flex align-items-center justify-content-center text-gray-900 border-round m-2 w-screen">
                     <Card class="w-6">
                         <template #content>
-                            
+
                             <div class="overflow-y-auto h-auto w-auto" style="max-height: 70vh; max-width: 75vw;">
                                 <slot />
                             </div>
