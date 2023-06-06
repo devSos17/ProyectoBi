@@ -1,4 +1,5 @@
 {
+    "name": "ProyectoBi",
     "private": true,
     "type": "module",
     "scripts": {
