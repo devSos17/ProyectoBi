@@ -292,7 +292,7 @@ const logout = () => {
             <!-- Page Content -->
             <main class="flex min-h-screen min-w-screen">
                 <div class="flex align-items-center justify-content-center text-gray-900 border-round m-2 w-screen">
-                    <Card class="w-6">
+                    <Card class="w-auto" style="max-width: 75vw;">
                         <template #content>
 
                             <div class="overflow-y-auto h-auto w-auto" style="max-height: 70vh; max-width: 75vw;">
