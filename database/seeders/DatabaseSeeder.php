@@ -52,6 +52,14 @@ class DatabaseSeeder extends Seeder
             [
                 'clase' => 'Egresos',
                 'subclase' => ''
+            ],
+            [
+                'clase' => 'Eresultados',
+                'subclase' => 'Gastos'
+            ],
+            [
+                'clase' => 'Eresultados',
+                'subclase' => 'Costos'
             ]
         ]);
 
@@ -88,7 +96,7 @@ class DatabaseSeeder extends Seeder
             ['tipo_cuenta_id' => 2, 'nombre' => 'depreciacion acumulada equipo de control.'],
             ['tipo_cuenta_id' => 2, 'nombre' => 'Equipo de transporte.'],
             ['tipo_cuenta_id' => 2, 'nombre' => 'Depreciacion acumulada equipo de transporte.'],
-                                        
+
             ['tipo_cuenta_id' => 3, 'nombre' => 'Rentas pagadas por anticipado.'],
             ['tipo_cuenta_id' => 3, 'nombre' => 'Intereses pagados por anticipado.'],
 
@@ -157,7 +165,11 @@ class DatabaseSeeder extends Seeder
             ['tipo_cuenta_id' => 9, 'nombre' => 'Cuota IMMS, guarderias y prestaciones sociales.'],
             ['tipo_cuenta_id' => 9, 'nombre' => 'Cuota Infonavit.'],
             ['tipo_cuenta_id' => 9, 'nombre' => 'Impuestos Especiales.'],
-            ['tipo_cuenta_id' => 9, 'nombre' => 'Depreciacion de  edificios.']
+            ['tipo_cuenta_id' => 9, 'nombre' => 'Depreciacion de  edificios.'],
+
+            ['tipo_cuenta_id' => 10, 'nombre' => 'Gastos Operativos'],
+
+            ['tipo_cuenta_id' => 11, 'nombre' => 'Costos de Venta']
         ]);
     }
 }
