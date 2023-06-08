@@ -3,7 +3,8 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\{MovimientoController, OperacionController, EstadoDeResultadosController };
+use App\Http\Controllers\{MovimientoController, OperacionController, EstadoDeResultadosController ,BalanzaComprobacionController};
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,13 @@ Route::middleware([
 });
 
 // Rutas de movimiento
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth'])->group(function () {
     Route::resource('movimiento', MovimientoController::class);
     Route::resource('operacion', OperacionController::class);
     Route::resource('eresultados', EstadoDeResultadosController::class);
 
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('balanzacomprobacion', [BalanzaComprobacionController::class, 'index'])->name('balanzacomprobacion.index');
 });
