@@ -55,12 +55,12 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'clase' => 'Eresultados',
-                'subclase' => 'Gastos'
+                'subclase' => 'Costos'
             ],
             [
                 'clase' => 'Eresultados',
-                'subclase' => 'Costos'
-            ]
+                'subclase' => 'Gastos'
+            ],
         ]);
 
         Cuenta::insert([
@@ -167,9 +167,10 @@ class DatabaseSeeder extends Seeder
             ['tipo_cuenta_id' => 9, 'nombre' => 'Impuestos Especiales.'],
             ['tipo_cuenta_id' => 9, 'nombre' => 'Depreciacion de  edificios.'],
 
-            ['tipo_cuenta_id' => 10, 'nombre' => 'Gastos Operativos'],
+            ['tipo_cuenta_id' => 10, 'nombre' => 'Costos de Venta'],
 
-            ['tipo_cuenta_id' => 11, 'nombre' => 'Costos de Venta']
+            ['tipo_cuenta_id' => 11, 'nombre' => 'Gastos Operativos'],
+            ['tipo_cuenta_id' => 11, 'nombre' => 'Gastos Administrativos']
         ]);
     }
 }
