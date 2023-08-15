@@ -61,6 +61,9 @@ const logout = () => {
                                 <NavLink :href="route('balanzacomprobacion.index')" :active="route().current('balanzacomprobacion.*')">
                                     Balanza de Comprobacion
                                 </NavLink>
+                                <NavLink :href="route('estadocostos.index')" :active="route().current('estadocostos.*')">
+                                    Estado de Costos
+                                </NavLink>
                             </div>
                         </div>
 
