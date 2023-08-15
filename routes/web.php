@@ -3,7 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\{BalanceGeneralController, MovimientoController, OperacionController, EstadoDeResultadosController ,BalanzaComprobacionController, RazonFinancieraController};
+use App\Http\Controllers\{MovimientoController, OperacionController, EstadoDeResultadosController, BalanzaComprobacionController};
 
 
 /*
@@ -36,10 +36,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('movimiento', MovimientoController::class);
     Route::resource('operacion', OperacionController::class);
     Route::resource('eresultados', EstadoDeResultadosController::class);
-    Route::resource('balancegeneral', BalanceGeneralController::class);
-    Route::resource('razonfinanciera', RazonFinancieraController::class);
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('balanzacomprobacion', [BalanzaComprobacionController::class, 'index'])->name('balanzacomprobacion.index');
+    Route::get('estadocostos', function () {
+        return Inertia::render("EstadoCostos");
+    })->name('estadocostos.index');
 });

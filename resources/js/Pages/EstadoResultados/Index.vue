@@ -23,10 +23,12 @@
                         }}
                     </template>
                 </Column>
-                <template #footer> Utilidad Bruta: $ {{utilidadBrutaTotal}} </template>
+                <template #footer>
+                    Utilidad Bruta: $ {{ utilidadBrutaTotal }}
+                </template>
             </DataTable>
             <br />
-            <DataTable :value="utilidadNeta" tableStyle="min-width: 50rem">
+            <DataTable :value="utilidadOperacion" tableStyle="min-width: 50rem">
                 <Column field="nombre" header="Concepto"></Column>
                 <Column field="monto" header="Monto">
                     <template #body="{ data }">
@@ -38,7 +40,51 @@
                         }}
                     </template>
                 </Column>
-                <template #footer> Utilidad Neta: $ {{ utilidadNetaTotal }} </template>
+                <template #footer>
+                    Utilidad de Operacion: $ {{ utilidadOperacionTotal }}
+                </template>
+            </DataTable>
+            <br />
+            <DataTable
+                :value="utilidadAntesImpuestos"
+                tableStyle="min-width: 50rem"
+            >
+                <Column field="nombre" header="Concepto"></Column>
+                <Column field="monto" header="Monto">
+                    <template #body="{ data }">
+                        $
+                        {{
+                            data.monto > 0
+                                ? `${data.monto}`
+                                : `(${data.monto * -1})`
+                        }}
+                    </template>
+                </Column>
+                <template #footer>
+                    Utilidad antes de PTU e ISR: $
+                    {{ utilidadAntesImpuestosTotal }}
+                </template>
+            </DataTable>
+            <br />
+            <DataTable
+                :value="utilidadEjercicio"
+                tableStyle="min-width: 50rem"
+            >
+                <Column field="nombre" header="Concepto"></Column>
+                <Column field="monto" header="Monto">
+                    <template #body="{ data }">
+                        $
+                        {{
+                            data.monto > 0
+                                ? `${data.monto}`
+                                : `(${data.monto * -1})`
+                        }}
+                    </template>
+                </Column>
+                <template #footer>
+                    Utilidad del Ejercicio: $
+                    {{ utilidadEjercicioTotal }}
+                </template>
             </DataTable>
         </div>
     </AppLayout>
@@ -65,23 +111,75 @@ const utilidadBruta = computed(() => {
     // TODO !IMPORTANT
     // HAY que des-hardcodear estos id's....
     return [
-        { nombre: "Ventas", monto: sumaCuenta(8) },
-        { nombre: "Costos de Venta", monto: sumaCuenta(10)*-1 },
+        // Hardcodeado para press
+        // { nombre: "Ventas", monto: sumaCuenta(8) },
+        { nombre: "Ventas", monto: 87500 },
+        // Hardcodeado del Estado de Costos...
+        { nombre: "Costos de Venta", monto: 42000 },
     ];
 });
 
-const utilidadBrutaTotal = computed(() => utilidadBruta.value[0].monto - utilidadBruta.value[1].monto)
+const utilidadBrutaTotal = computed(
+    () => utilidadBruta.value[0].monto - utilidadBruta.value[1].monto
+);
 
-const utilidadNeta = computed(() => {
+const utilidadOperacion = computed(() => {
     // TODO !IMPORTANT
     // HAY que des-hardcodear estos id's....
     return [
         { nombre: "Utilidad Bruta", monto: utilidadBrutaTotal.value },
-        { nombre: "Gastos de Operacion", monto: sumaCuenta(11)*-1 },
+        // { nombre: "Gastos de Operacion", monto: sumaCuenta(11)*-1 },
+        // Hardcodeado para press
+        { nombre: "Gastos de Operacion", monto: 0 },
+        { nombre: "Gastos de Administracion", monto: -12400 },
+        { nombre: "Gastos de Ventas", monto: -15100 },
     ];
 });
 
-const utilidadNetaTotal = computed(() => utilidadNeta.value[0].monto - utilidadNeta.value[1].monto)
+// const utilidadOperacionTotal = computed(() => utilidadOperacion.value[0].monto + utilidadOperacion.value[1].monto - utilidadOperacion.value[2].monto - utilidadOperacion.value[3].monto )
+const utilidadOperacionTotal = computed(() =>
+    utilidadOperacion.value.reduce((arr, ite) => arr + ite.monto, 0)
+);
+
+const utilidadAntesImpuestos = computed(() => {
+    // TODO !IMPORTANT
+    // HAY que des-hardcodear estos id's....
+    return [
+        {
+            nombre: "Utilidad de Operacion",
+            monto: utilidadOperacionTotal.value,
+        },
+        // { nombre: "Gastos de Operacion", monto: sumaCuenta(11)*-1 },
+        // Hardcodeado para press
+        { nombre: "Otros Ingresos", monto: 0 },
+        { nombre: "Otros Gastos", monto: 0 },
+    ];
+});
+
+const utilidadAntesImpuestosTotal = computed(() =>
+    utilidadAntesImpuestos.value.reduce((arr, ite) => arr + ite.monto, 0)
+);
+
+// Impuestos
+let PTU = 0.3,
+    ISR = 0.1;
+const utilidadEjercicio = computed(() => {
+    // TODO !IMPORTANT
+    // HAY que des-hardcodear estos id's....
+    return [
+        {
+            nombre: "Utilidad antes de PTU e ISR",
+            monto: utilidadAntesImpuestosTotal.value,
+        },
+        // { nombre: "Gastos de Operacion", monto: sumaCuenta(11)*-1 },
+        { nombre: "PTU", monto: -(utilidadAntesImpuestosTotal.value * PTU) },
+        { nombre: "ISR", monto: -(utilidadAntesImpuestosTotal.value * ISR) },
+    ];
+});
+
+const utilidadEjercicioTotal = computed(() =>
+    utilidadEjercicio.value.reduce((arr, ite) => arr + ite.monto, 0)
+);
 
 const sumaCuenta = (tipoId) =>
     props.cuentas
@@ -95,7 +193,7 @@ const sumaCuenta = (tipoId) =>
                 .filter((mov) => !mov.if_abono)
                 .reduce((acc, ite) => acc + ite.cantidad, 0);
 
-            console.log({abonos,retiros})
+            console.log({ abonos, retiros });
             return abonos - retiros;
         })
         .reduce((acc, ite) => acc + ite, 0);

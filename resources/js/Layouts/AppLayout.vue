@@ -67,6 +67,9 @@ const logout = () => {
                                 <NavLink :href="route('razonfinanciera.index')" :active="route().current('razonfinanciera.*')">
                                     Razones financieras
                                 </NavLink>
+                                <NavLink :href="route('estadocostos.index')" :active="route().current('estadocostos.*')">
+                                    Estado de Costos
+                                </NavLink>
                             </div>
                         </div>
 
