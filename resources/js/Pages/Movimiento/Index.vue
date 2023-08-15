@@ -33,7 +33,7 @@
                         <li class="mt-1">
                             <b>{{ movimiento.cuenta.nombre }}</b>
                             <br>
-                            <span>{{ movimiento.cantidad }} - {{ movimiento.if_abono ? 'Abono' : 'Retiro' }}</span>
+                            <span>{{ movimiento.cantidad }} - {{ movimiento.if_abono ? 'Retiro' : 'Abono' }}</span>
                         </li>
                     </ul>
                 </template>
@@ -105,7 +105,7 @@
                                 <InputNumber v-model="operacion.cantidad" inputId="integeronly" locale="es-MX" :minFractionDigits="2" required/>
                             </div>
                             <div class="flex flex-column align-items-center">
-                                <label class="font-bold block mb-2">Abono / Retiro</label>
+                                <label class="font-bold block mb-2">Abono/Retiro</label>
                                 <InputSwitch v-model="operacion.abono" />
                             </div>
                             <div class="flex flex-column align-items-center">

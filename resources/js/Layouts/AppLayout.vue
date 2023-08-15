@@ -49,17 +49,23 @@ const logout = () => {
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                <!-- <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
-                                </NavLink>
+                                </NavLink> -->
                                 <NavLink :href="route('movimiento.index')" :active="route().current('movimiento.*')">
                                     Movimientos
+                                </NavLink>
+                                <NavLink :href="route('balancegeneral.index')" :active="route().current('balancegeneral.*')">
+                                    Balance General
                                 </NavLink>
                                 <NavLink :href="route('eresultados.index')" :active="route().current('eresultados.*')">
                                     Estado de Resultados
                                 </NavLink>
                                 <NavLink :href="route('balanzacomprobacion.index')" :active="route().current('balanzacomprobacion.*')">
                                     Balanza de Comprobacion
+                                </NavLink>
+                                <NavLink :href="route('razonfinanciera.index')" :active="route().current('razonfinanciera.*')">
+                                    Razones financieras
                                 </NavLink>
                             </div>
                         </div>
