@@ -113,9 +113,9 @@ const utilidadBruta = computed(() => {
     return [
         // Hardcodeado para press
         // { nombre: "Ventas", monto: sumaCuenta(8) },
-        { nombre: "Ventas", monto: 87500 },
+        { nombre: "Ventas", monto: 210000 },
         // Hardcodeado del Estado de Costos...
-        { nombre: "Costos de Venta", monto: 42000 },
+        { nombre: "Costos de Venta", monto: 100800 },
     ];
 });
 

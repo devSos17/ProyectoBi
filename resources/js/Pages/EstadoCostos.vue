@@ -61,99 +61,99 @@ const computedData = computed(() => data);
 let data = [
     {
         nombre: "Inventario Inicial de materias primas",
-        monto: 17500,
+        monto: 42000,
     },
     {
         nombre: "Costo de Materias primas Recibidas",
-        monto: 28000,
+        monto: 67200,
+    },
+    {
+        nombre: "Materias primas en disponibilidad",
+        monto: 109200,
     },
     {
         nombre: "Inverntario final de materias",
-        monto: -12600,
+        monto: -30240,
     },
     {
         nombre: "Total de materias primas utilizadas",
-        monto: 32900,
+        monto: 78960,
     },
     {
         nombre: "Costo de materias primas indirectas utilizadas",
-        monto: -4900,
+        monto: -11760,
     },
     {
         nombre: "Costo de materias primas directas",
-        monto: 28000,
+        monto: 67200,
     },
     {
         nombre: "Mano de obra directa utilizada",
-        monto: 10500,
+        monto: 25200,
     },
     {
         nombre: "Total mano de obra",
-        desgloce: 12600,
+        desgloce: 30240,
     },
     {
         nombre: "Mano de obra indirecta",
-        desgloce: -2100,
+        desgloce: -5040,
     },
     {
         nombre: "Costo Primo",
-        monto: 11900,
+        monto: 92400,
     },
     {
-        nombre: "Cargos indirectos",
-        desgloce: 4900,
+        nombre: "Cargos Indirectos de Fabricacion",
+        desgloce: 28560,
     },
     {
         nombre: "Mano de obra indirecta",
-        desgloce: 2100,
+        desgloce: 5040,
     },
     {
         nombre: "Diversas erogaciones fabriles",
-        desgloce: 1400,
+        desgloce: 3360,
     },
     {
         nombre: "Depreciacion Acumulada",
-        desgloce: 3500,
-    },
-    {
-        nombre: "Amortizaciones fabriles",
-        desgloce: 0,
+        desgloce: 8400,
     },
     {
         nombre: "Costo de produccion procesada",
-        monto: 50400,
+        monto: 120960,
     },
     {
         nombre: "Inventario Inicial de prododuccion en proceso",
-        monto: 11900,
+        monto: 27560,
     },
     {
         nombre: "Produccion en proceso disponible",
-        monto: 62300,
+        monto: 148520,
     },
     {
         nombre: "Inventario final de produccion en proceso",
-        monto: -16800,
+        monto: -40320,
     },
     {
         nombre: "Costo de produccion terminada",
-        monto: 45500,
+        monto: 108200,
     },
     {
         nombre: "Inventario inicial de producto terminado",
-        monto: 21000,
+        monto: 50400,
     },
     {
         nombre: "Productos terminados en disponibilidad",
-        monto: 66500,
+        monto: 158600,
     },
     {
         nombre: "Inventario final de producto terminado",
-        monto: -24500,
+        monto: -58800,
     },
 ];
 
-const costoProductosVendidos = ref(42000)
+const costoProductosVendidos = ref(99800)
 
 // API para filtrar
 // import { FilterMatchMode } from "primevue/api";
